@@ -16,6 +16,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import label_binarize
 from sklearn.metrics import roc_curve, classification_report
 import matplotlib.pyplot as plt
+import os
 
 comp_cate = project2_toolkit.comp_categories
 rec_cate  = project2_toolkit.rec_categories
@@ -63,7 +64,7 @@ plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.0])
 plt.xlabel("False Positive Rate")
 plt.ylabel("True Positive Rate")
-plt.title("ROC Curve of Gaussian Naive Bayes Classifier on Computer articles")
+plt.title("ROC Curve of Logistic Regression Classifier on Computer articles (without Regularization)")
 
 img.add_subplot(1,2,2)
 rec_line0, = plt.plot(rec_fpr[0], rec_tpr[0], lw=2, color='darkorange', label="rec.autos")
@@ -76,12 +77,25 @@ plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.0])
 plt.xlabel("False Positive Rate")
 plt.ylabel("True Positive Rate")
-plt.title("ROC Curve of Gaussian Naive Bayes Classifier on Recreation articles")
+plt.title("ROC Curve of Logistic Regression Classifier on Recreation articles (without Regularization)")
 
-plt.savefig("Roc_curve_logit.png")
+plt.savefig("./logistic_regression_wo_regularization/Roc_curve_logit.png")
 
 comp_report = classification_report(y_pred= comp_predicted_class, y_true= comp_test_target)
 rec_report  = classification_report(y_pred= rec_predicted_class,  y_true= rec_test_target)
 
-print rec_report
-print comp_report
+comp_file = "./logistic_regression_wo_regularization/comp_report.txt"
+rec_file  = "./logistic_regression_wo_regularization/rec_report.txt"
+
+try:
+    os.remove(comp_file)
+    os.remove(rec_file)
+except OSError:
+    pass
+
+with open(comp_file, 'a') as output:
+    output.write(comp_report)
+    output.write("\n")
+with open(rec_file, 'a')  as output:
+    output.write(rec_report)
+    output.write("\n")
