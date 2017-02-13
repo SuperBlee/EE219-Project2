@@ -43,6 +43,7 @@ kf = KFold(n_splits=5, shuffle=True)
 
 # Setting the regularization C, which is the hyper-parameter on the regularization term
 for order_C in range(5):
+    i = 0
     for train, test in kf.split(data_set):
         # Setting the C for regularization
         value_C = 10**order_C
@@ -54,8 +55,6 @@ for order_C in range(5):
         # Predicting on the test data
         predicted = soft_margin_svm.predict(data_set[test])
         report = metrics.classification_report(target_set[test], predicted)
+        print "Value of C is {} and Fold# {}".format(str(value_C), str(i))
+        i = i+1
         print report
-
-
-
-
