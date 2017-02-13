@@ -21,9 +21,12 @@ import numpy as np
 comp_categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware', 'comp.sys.mac.hardware']
 rec_categories =  ['rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey']
 
+# Set the number of components of the SVD as K
+K = 50
+
 # Pre-processing the data
-comp_train, comp_target, comp_names = project2_toolkit.preprocess(categories=comp_categories, subset="train", k=30)
-rec_train,  rec_target,  rec_names  = project2_toolkit.preprocess(categories=rec_categories,  subset="train", k=30)
+comp_train, comp_target, comp_names = project2_toolkit.preprocess(categories=comp_categories, subset="train", k=K)
+rec_train,  rec_target,  rec_names  = project2_toolkit.preprocess(categories=rec_categories,  subset="train", k=K)
 
 # Transform the target of computer related as 0, and recreation related as 1
 comp_target = [-1 for x in xrange(0, len(comp_target))]

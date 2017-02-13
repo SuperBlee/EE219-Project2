@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 comp_cate = project2_toolkit.comp_categories
 rec_cate  = project2_toolkit.rec_categories
 
+# Set the number of components of the SVD as K
 K = 50
 
 comp_train, comp_train_target, comp_train_name = project2_toolkit.preprocess(comp_cate, subset="train", k=K)

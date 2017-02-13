@@ -20,11 +20,14 @@ import matplotlib.pyplot as plt
 comp_cate = project2_toolkit.comp_categories
 rec_cate  = project2_toolkit.rec_categories
 
+# Set the number of components of the SVD as K
+K = 50
+
 # First, fetch all data set from "comp" and "rec", the "train" and the "test"
-comp_train, comp_train_target, comp_train_name = project2_toolkit.preprocess(comp_cate, subset="train", k=20)
-rec_train,  rec_train_target,  rec_train_name  = project2_toolkit.preprocess(rec_cate,  subset="train", k=20)
-comp_test, comp_test_target, comp_test_name = project2_toolkit.preprocess(comp_cate, subset="test", k=20)
-rec_test,  rec_test_target,  rec_test_name  = project2_toolkit.preprocess(rec_cate,  subset="test", k=20)
+comp_train, comp_train_target, comp_train_name = project2_toolkit.preprocess(comp_cate, subset="train", k=K)
+rec_train,  rec_train_target,  rec_train_name  = project2_toolkit.preprocess(rec_cate,  subset="train", k=K)
+comp_test, comp_test_target, comp_test_name = project2_toolkit.preprocess(comp_cate, subset="test", k=K)
+rec_test,  rec_test_target,  rec_test_name  = project2_toolkit.preprocess(rec_cate,  subset="test", k=K)
 
 # Do the job on "Computer" class
 # Construct an Gaussian NB object, setting the arguments are default
