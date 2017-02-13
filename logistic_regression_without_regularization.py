@@ -64,7 +64,7 @@ plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.0])
 plt.xlabel("False Positive Rate")
 plt.ylabel("True Positive Rate")
-plt.title("ROC Curve of Logistic Regression Classifier on Computer articles (without Regularization)")
+plt.title("ROC Curve of Logistic Regression Classifier on Computer articles \n (without Regularization)")
 
 img.add_subplot(1,2,2)
 rec_line0, = plt.plot(rec_fpr[0], rec_tpr[0], lw=2, color='darkorange', label="rec.autos")
@@ -77,7 +77,7 @@ plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.0])
 plt.xlabel("False Positive Rate")
 plt.ylabel("True Positive Rate")
-plt.title("ROC Curve of Logistic Regression Classifier on Recreation articles (without Regularization)")
+plt.title("ROC Curve of Logistic Regression Classifier on Recreation articles \n (without Regularization)")
 
 plt.savefig("./logistic_regression_wo_regularization/Roc_curve_logit.png")
 
