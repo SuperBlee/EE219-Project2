@@ -15,6 +15,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import KFold
 from sklearn import metrics
 import numpy as np
+import os
 
 
 # Assign the data categories to work on
@@ -41,20 +42,29 @@ target_set = np.concatenate((comp_target, rec_target), axis=0)
 # Setting the Cross validation
 kf = KFold(n_splits=5, shuffle=True)
 
-# Setting the regularization C, which is the hyper-parameter on the regularization term
-for order_C in range(5):
-    i = 0
-    for train, test in kf.split(data_set):
-        # Setting the C for regularization
-        value_C = 10**order_C
-        soft_margin_svm = SVC(C=value_C)
+file = "soft_margin_svm/report.txt"
+try:
+    os.remove(file)
+except OSError:
+    pass
 
-        # Fitting the training part
-        soft_margin_svm.fit(data_set[train], target_set[train])
+with open(file, 'a') as f:
+    # Setting the regularization C, which is the hyper-parameter on the regularization term
+    for order_C in range(-3, 4):
+        i = 0
+        for train, test in kf.split(data_set):
+            # Setting the C for regularization
+            value_C = 10**order_C
+            soft_margin_svm = SVC(C=value_C)
 
-        # Predicting on the test data
-        predicted = soft_margin_svm.predict(data_set[test])
-        report = metrics.classification_report(target_set[test], predicted)
-        print "Value of C is {} and Fold# {}".format(str(value_C), str(i))
-        i = i+1
-        print report
+            # Fitting the training part
+            soft_margin_svm.fit(data_set[train], target_set[train])
+
+            # Predicting on the test data
+            predicted = soft_margin_svm.predict(data_set[test])
+            report = metrics.classification_report(target_set[test], predicted)
+            s = "Value of C is {} and Fold# {}".format(str(value_C), str(i))
+            print s
+            i = i+1
+            f.write(s+"\n")
+            f.write(report)
