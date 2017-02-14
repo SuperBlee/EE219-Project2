@@ -7,6 +7,8 @@ So it's just telling you what's in here.
 Well All details are in the file
 > [`soft_margin_svm.py`](./soft_margin_svm.py)
 
+The report is in `soft_margin_svm` folder.
+
 And this file doesn't have a graphical output.
 
 
@@ -22,17 +24,19 @@ Cause I'd like to name the file as clear as possible and I am very likely to for
 Here is the output.
 > [`Roc_curve_logit.py`](./Roc_curve_logit.py)
 
+The images and reports are in `logistic_regression_wo_regularization`
+
 __The only thing to mention is that setting `C=1e5` means to set the regularization to be a small effect term.__
 
 #### Task i: Logistic Regression with L1 Norm
 > [`Roc_curve_logit_l1.py`](Roc_curve_logit_l1.py)
 
-> [`Roc_curve_logit_l1.png`](Roc_curve_logit_l1.png)
+The images and reports are in `logistic_regression_L1_img`
 
 #### Task j: Logistic Regression with L2 Norm
 
 > [`Roc_curve_logit_l2.py`](Roc_curve_logit_l2.py)
 
-> [`Roc_curve_logit_l2.png`](Roc_curve_logit_l2.png)
+The images and reports are in `logistic_regression_L2_img`
 
 This is Pinyin: Wo de README you du.
